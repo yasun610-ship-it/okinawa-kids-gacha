@@ -15,10 +15,23 @@
         .weather-banner { background-color: #e0f7fa; color: #006064; text-align: center; padding: 10px; font-size: 0.9em; border-bottom: 1px solid #b2ebf2; }
         .weather-banner a { color: #00838f; font-weight: bold; text-decoration: underline; margin-left: 10px; }
 
-        /* フィルター部分（★修正：ゆとりを持たせて文字切れを防ぐ） */
+        /* フィルターと新機能部分 */
         .filters { padding: 10px; background: #fff; border-bottom: 2px solid #eee; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
         select { flex: 1 1 calc(48% - 8px); min-width: 120px; padding: 8px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.85em; }
         
+        /* 検索ボックスとエリアタブ */
+        .search-box { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px; font-size: 0.9em; }
+        .area-tabs { display: flex; width: 100%; border-radius: 5px; overflow: hidden; border: 1px solid #ffaa00; margin-bottom: 5px; }
+        .area-tab { flex: 1; padding: 8px 0; background: white; color: #ffaa00; border: none; cursor: pointer; font-weight: bold; border-right: 1px solid #ffaa00; font-size: 0.9em; }
+        .area-tab:last-child { border-right: none; }
+        .area-tab.active { background: #ffaa00; color: white; }
+        
+        /* 直接ガチャと行ったよフィルター */
+        .direct-gacha-btn { background: #00bcd4; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; font-weight: bold; cursor: pointer; box-shadow: 0 2px 4px rgba(0,188,212,0.3); font-size: 1em; margin-top: 5px; }
+        .visited-toggle { width: 100%; text-align: right; font-size: 0.85em; color: #666; }
+        .visited-btn { background: white; border: 1px solid #4caf50; color: #4caf50; padding: 3px 8px; border-radius: 12px; font-size: 0.75em; cursor: pointer; margin-left: 10px; transition: 0.2s; vertical-align: middle; }
+        .visited-btn.active { background: #4caf50; color: white; }
+
         /* キープエリア */
         .keep-area { padding: 15px; background-color: #fff3e0; border-bottom: 2px dashed #ffb74d; text-align: center; }
         .keep-area h2 { font-size: 1em; margin: 0 0 10px 0; color: #e65100; }
@@ -28,26 +41,27 @@
         .gacha-btn:active { transform: scale(0.95); }
         .gacha-btn:disabled { background-color: #ccc; box-shadow: none; cursor: not-allowed; }
 
-        /* リスト部分（★修正：左右の余白を追加してフチへの圧迫感を軽減） */
+        /* リスト部分 */
         .spot-list { padding: 15px 10px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 50px; }
-        .spot-card { background: white; border: 1px solid #eee; border-radius: 10px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: relative; }
-        .spot-card h3 { margin: 0 0 5px 0; font-size: 1.1em; color: #2c3e50; padding-right: 40px; }
+        .spot-card { background: white; border: 1px solid #eee; border-radius: 10px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: relative; transition: opacity 0.3s; }
+        .spot-card h3 { margin: 0 0 5px 0; font-size: 1.1em; color: #2c3e50; padding-right: 40px; display: flex; align-items: center; justify-content: space-between; }
         .tags { margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 4px; }
         .tag { display: inline-block; background: #e0f7fa; color: #006064; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; }
         .desc { font-size: 0.85em; color: #333; line-height: 1.4; margin-bottom: 8px; }
         .advice { font-size: 0.8em; color: #d84315; background: #fbe9e7; padding: 8px; border-radius: 5px; margin-bottom: 8px; border-left: 3px solid #ff5722; }
         .infra { font-size: 0.8em; color: #777; margin-bottom: 5px; }
         
-        /* アクションリンク用ボタンスタイル（★修正：折り返し設定とボタン幅の柔軟化） */
+        /* アクションリンク用ボタンスタイル */
         .link-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #eee; justify-content: center; }
         .action-link { flex: 1 1 auto; min-width: 80px; text-align: center; display: inline-flex; justify-content: center; align-items: center; background-color: #f0f0f0; color: #444; text-decoration: none; font-size: 0.8em; font-weight: bold; padding: 8px 12px; border-radius: 15px; transition: background-color 0.2s; box-sizing: border-box; }
         .action-link:hover { background-color: #e0e0e0; }
         .action-link.youtube { background-color: #ffebee; color: #c62828; }
         .action-link.map { background-color: #e8f5e9; color: #2e7d32; }
         .action-link.official { background-color: #e3f2fd; color: #1565c0; }
+        .action-link.line { background-color: #06C755; color: white; }
         
         /* キープボタン（星） */
-        .keep-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.8em; color: #ccc; cursor: pointer; transition: color 0.2s; }
+        .keep-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.8em; color: #ccc; cursor: pointer; transition: color 0.2s; z-index: 10;}
         .keep-btn.active { color: #ffca28; }
 
         /* ガチャ結果モーダル */
@@ -79,6 +93,15 @@
         </div>
 
         <div class="filters">
+            <input type="text" id="search-keyword" class="search-box" placeholder="キーワードで探す（公園名、滑り台、無料など）" onkeyup="renderList()">
+            
+            <div class="area-tabs">
+                <button class="area-tab active" onclick="setAreaFilter('all', this)">すべて</button>
+                <button class="area-tab" onclick="setAreaFilter('北部', this)">北部</button>
+                <button class="area-tab" onclick="setAreaFilter('中部', this)">中部</button>
+                <button class="area-tab" onclick="setAreaFilter('南部', this)">南部</button>
+            </div>
+
             <select id="filter-category" onchange="renderList()">
                 <option value="all">カテゴリ：すべて</option>
                 <option value="お外">お外（公園・施設）</option>
@@ -88,19 +111,16 @@
                 <option value="all">天気：気にしない</option>
                 <option value="雨天OK">雨天OK・全天候</option>
             </select>
-            <select id="filter-city" onchange="renderList()">
-                <option value="all">エリア：すべて</option>
-                <option value="うるま市">うるま市</option>
-                <option value="沖縄市">沖縄市</option>
-                <option value="読谷村">読谷村</option>
-                <option value="宜野湾市">宜野湾市</option>
-                <option value="おうち">おうち</option>
-            </select>
+
+            <div class="visited-toggle">
+                <label><input type="checkbox" id="hide-visited" onchange="renderList()"> 行った場所を隠す</label>
+            </div>
+            <button class="direct-gacha-btn" onclick="spinDirectGacha()">🎲 この条件ですぐガチャを回す！</button>
         </div>
 
         <div id="loading">データを読み込み中...</div>
         <div id="spot-list" class="spot-list" style="display: none;">
-            </div>
+        </div>
     </div>
 
     <div id="result-modal" class="modal-overlay">
@@ -118,11 +138,20 @@
         const today = new Date();
         document.getElementById('today-date').innerText = `${today.getMonth() + 1}月${today.getDate()}日`;
 
-        // ★データの読み込み先URL（デプロイしたウェブアプリのURLを貼る）
         const GAS_API_URL = "https://script.google.com/macros/s/AKfycbz7AGG9Vtr3iYNAou3_PSMEwBNkAY44Lohk2B5TElCy9GzhE7MO6ORKgGzv2nRR6afM6A/exec";
 
         let spots = [];
         let keptIds = [];
+        // スマホ内保存（localStorage）から行ったよデータを取得
+        let visitedIds = JSON.parse(localStorage.getItem('visitedIds')) || [];
+        let currentAreaFilter = 'all';
+
+        // 沖縄の市町村エリア自動判定用マップ
+        const areaMap = {
+            '北部': ['名護', '国頭', '大宜味', '東村', '今帰仁', '本部', '恩納', '宜野座', '金武', '伊江', '北部'],
+            '中部': ['うるま', '沖縄市', '宜野湾', '浦添', '読谷', '嘉手納', '北谷', '北中城', '中城', '西原', '中部'],
+            '南部': ['那覇', '豊見城', '糸満', '南城', '与那原', '南風原', '八重瀬', '南部']
+        };
 
         async function loadData() {
             try {
@@ -140,10 +169,28 @@
             }
         }
 
+        // エリアタブの切り替え処理
+        function setAreaFilter(area, btnElement) {
+            currentAreaFilter = area;
+            document.querySelectorAll('.area-tab').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            renderList();
+        }
+
+        // 行ったよ！ボタンの切り替え処理
+        function toggleVisited(id) {
+            if (visitedIds.includes(id)) {
+                visitedIds = visitedIds.filter(vId => vId !== id);
+            } else {
+                visitedIds.push(id);
+            }
+            localStorage.setItem('visitedIds', JSON.stringify(visitedIds));
+            renderList();
+        }
+
         function createActionLinksHtml(spot) {
             let linksHtml = '';
 
-            // ★追加：目的地の天気をピンポイントで調べるボタン
             const weatherQuery = encodeURIComponent(spot.city + " " + spot.name + " 天気");
             linksHtml += `<a href="https://www.google.com/search?q=${weatherQuery}" target="_blank" rel="noopener noreferrer" class="action-link" style="background-color: #e0f7fa; color: #00838f;">⛅ 現地の天気</a>`;
             
@@ -151,15 +198,21 @@
                 const searchQuery = encodeURIComponent(spot.name + " 遊び方");
                 linksHtml += `<a href="https://www.youtube.com/results?search_query=${searchQuery}" target="_blank" rel="noopener noreferrer" class="action-link youtube">📺 YouTubeで遊び方を見る</a>`;
             } else if (spot.category === 'お外') {
-                // mapUrlが設定されていて、かつ「-」でない場合
                 if (spot.mapUrl && spot.mapUrl !== '-') {
                     linksHtml += `<a href="${spot.mapUrl}" target="_blank" rel="noopener noreferrer" class="action-link map">📍 Googleマップ</a>`;
                 }
-                // officialUrlが設定されていて、かつ「-」でない場合
                 if (spot.officialUrl && spot.officialUrl !== '-') {
                     linksHtml += `<a href="${spot.officialUrl}" target="_blank" rel="noopener noreferrer" class="action-link official">🌐 公式サイト</a>`;
                 }
             }
+            
+            // ★追加：LINEで誘う機能
+            let lineText = `ここ行かない？🚗💨\n${spot.name}\n`;
+            if (spot.mapUrl && spot.mapUrl !== '-') {
+                lineText += `地図: ${spot.mapUrl}`;
+            }
+            const lineShareUrl = `https://line.me/R/msg/text/?${encodeURIComponent(lineText)}`;
+            linksHtml += `<a href="${lineShareUrl}" target="_blank" rel="noopener noreferrer" class="action-link line">💬 LINEで誘う</a>`;
             
             if (linksHtml !== '') {
                 return `<div class="link-container">${linksHtml}</div>`;
@@ -171,22 +224,42 @@
             const listContainer = document.getElementById('spot-list');
             const categoryFilter = document.getElementById('filter-category').value;
             const weatherFilter = document.getElementById('filter-weather').value;
-            const cityFilter = document.getElementById('filter-city').value; 
+            const keyword = document.getElementById('search-keyword').value.toLowerCase();
+            const hideVisited = document.getElementById('hide-visited').checked;
             
             listContainer.innerHTML = '';
 
             spots.forEach(spot => {
+                // 1. カテゴリ＆天気フィルター
                 if (categoryFilter !== "all" && spot.category !== categoryFilter) return;
                 if (weatherFilter === "雨天OK" && spot.weather !== "雨天OK" && spot.weather !== "全天候") return;
-                if (cityFilter !== "all" && spot.city !== cityFilter) return; 
+                
+                // 2. エリアフィルター（市町村名から自動判定）
+                if (currentAreaFilter !== "all" && spot.category !== 'おうち') {
+                    const matchWords = areaMap[currentAreaFilter];
+                    const isMatch = matchWords.some(word => (spot.city && spot.city.includes(word)));
+                    if (!isMatch) return;
+                }
+
+                // 3. キーワード検索（名前、説明、カテゴリ、市町村から検索）
+                if (keyword) {
+                    const textToSearch = (spot.name + (spot.desc || "") + spot.category + (spot.city || "")).toLowerCase();
+                    if (!textToSearch.includes(keyword)) return;
+                }
+
+                // 4. 行ったよ非表示フィルター
+                const isVisited = visitedIds.includes(spot.id);
+                if (hideVisited && isVisited) return;
 
                 const isKept = keptIds.includes(spot.id);
                 const starClass = isKept ? "keep-btn active" : "keep-btn";
                 const starIcon = isKept ? "★" : "☆";
 
+                const visitedClass = isVisited ? "visited-btn active" : "visited-btn";
+                const visitedText = isVisited ? "✅ 行った！" : "🚙 行った？";
+
                 const linksSection = createActionLinksHtml(spot);
 
-                // アドバイスがある場合のみ表示するHTMLを作成
                 let adviceHtml = '';
                 if (spot.advice && spot.advice !== '-') {
                     adviceHtml = `<div class="advice">💡 ${spot.advice}</div>`;
@@ -194,9 +267,15 @@
 
                 const card = document.createElement('div');
                 card.className = 'spot-card';
+                // 行ったことのある場所は少し透明度を下げて視覚的に区別
+                if (isVisited) card.style.opacity = "0.65";
+                
                 card.innerHTML = `
                     <button class="${starClass}" onclick="toggleKeep(${spot.id})">${starIcon}</button>
-                    <h3>${spot.name}</h3>
+                    <h3>
+                        <span>${spot.name}</span>
+                        <button class="${visitedClass}" onclick="toggleVisited(${spot.id})">${visitedText}</button>
+                    </h3>
                     <div class="tags">
                         <span class="tag">${spot.category}</span>
                         <span class="tag">${spot.weather}</span>
@@ -211,6 +290,62 @@
                 `;
                 listContainer.appendChild(card);
             });
+        }
+
+        // 追加機能：現在の条件で直接ガチャを回す
+        function spinDirectGacha() {
+            const categoryFilter = document.getElementById('filter-category').value;
+            const weatherFilter = document.getElementById('filter-weather').value;
+            const keyword = document.getElementById('search-keyword').value.toLowerCase();
+            const hideVisited = document.getElementById('hide-visited').checked;
+            
+            // 現在画面に表示されている条件に合うスポットだけを抽出
+            let currentSpots = spots.filter(spot => {
+                if (categoryFilter !== "all" && spot.category !== categoryFilter) return false;
+                if (weatherFilter === "雨天OK" && spot.weather !== "雨天OK" && spot.weather !== "全天候") return false;
+                if (currentAreaFilter !== "all" && spot.category !== 'おうち') {
+                    const matchWords = areaMap[currentAreaFilter];
+                    if (!matchWords.some(word => (spot.city && spot.city.includes(word)))) return false;
+                }
+                if (keyword) {
+                    const textToSearch = (spot.name + (spot.desc || "") + spot.category + (spot.city || "")).toLowerCase();
+                    if (!textToSearch.includes(keyword)) return false;
+                }
+                if (hideVisited && visitedIds.includes(spot.id)) return false;
+                return true;
+            });
+
+            if (currentSpots.length === 0) {
+                alert("この条件に合うスポットがありません！条件を変えてみてください。");
+                return;
+            }
+
+            const gachaBtn = document.querySelector('.direct-gacha-btn');
+            const originalText = gachaBtn.innerText;
+            gachaBtn.innerText = "ぐるぐるぐる...🎲";
+            gachaBtn.disabled = true;
+
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * currentSpots.length);
+                const selectedSpot = currentSpots[randomIndex];
+
+                document.getElementById('result-title').innerText = selectedSpot.name;
+                document.getElementById('result-desc').innerText = selectedSpot.desc;
+                
+                const adviceEl = document.getElementById('result-advice');
+                if (selectedSpot.advice && selectedSpot.advice !== '-') {
+                    adviceEl.innerText = `💡 ${selectedSpot.advice}`;
+                    adviceEl.style.display = 'block';
+                } else {
+                    adviceEl.style.display = 'none';
+                }
+                
+                document.getElementById('result-link').innerHTML = createActionLinksHtml(selectedSpot);
+                document.getElementById('result-modal').style.display = "flex";
+                
+                gachaBtn.innerText = originalText;
+                gachaBtn.disabled = false;
+            }, 800);
         }
 
         function toggleKeep(id) {
@@ -266,7 +401,6 @@
                 document.getElementById('result-title').innerText = selectedSpot.name;
                 document.getElementById('result-desc').innerText = selectedSpot.desc;
                 
-                // アドバイスがあればモーダルにも表示
                 const adviceEl = document.getElementById('result-advice');
                 if (selectedSpot.advice && selectedSpot.advice !== '-') {
                     adviceEl.innerText = `💡 ${selectedSpot.advice}`;
