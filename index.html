@@ -15,9 +15,9 @@
         .weather-banner { background-color: #e0f7fa; color: #006064; text-align: center; padding: 10px; font-size: 0.9em; border-bottom: 1px solid #b2ebf2; }
         .weather-banner a { color: #00838f; font-weight: bold; text-decoration: underline; margin-left: 10px; }
 
-        /* フィルター部分（★修正：折り返しと柔軟性の強化） */
-        .filters { padding: 10px; background: #fff; border-bottom: 2px solid #eee; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        select { flex: 1 1 calc(33% - 8px); min-width: 90px; padding: 8px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.85em; }
+        /* フィルター部分（★修正：ゆとりを持たせて文字切れを防ぐ） */
+        .filters { padding: 10px; background: #fff; border-bottom: 2px solid #eee; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+        select { flex: 1 1 calc(48% - 8px); min-width: 120px; padding: 8px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.85em; }
         
         /* キープエリア */
         .keep-area { padding: 15px; background-color: #fff3e0; border-bottom: 2px dashed #ffb74d; text-align: center; }
@@ -145,19 +145,19 @@
 
             // ★追加：目的地の天気をピンポイントで調べるボタン
             const weatherQuery = encodeURIComponent(spot.city + " " + spot.name + " 天気");
-            linksHtml += `⛅ <a href="https://www.google.com/search?q=${weatherQuery}" target="_blank" rel="noopener noreferrer" class="action-link" style="background-color: #e0f7fa; color: #00838f;">現地の天気</a>`;
+            linksHtml += `<a href="https://www.google.com/search?q=${weatherQuery}" target="_blank" rel="noopener noreferrer" class="action-link" style="background-color: #e0f7fa; color: #00838f;">⛅ 現地の天気</a>`;
             
             if (spot.category === 'おうち') {
                 const searchQuery = encodeURIComponent(spot.name + " 遊び方");
-                linksHtml += `📺 <a href="https://www.youtube.com/results?search_query=${searchQuery}" target="_blank" rel="noopener noreferrer" class="action-link youtube">YouTubeで遊び方を見る</a>`;
+                linksHtml += `<a href="https://www.youtube.com/results?search_query=${searchQuery}" target="_blank" rel="noopener noreferrer" class="action-link youtube">📺 YouTubeで遊び方を見る</a>`;
             } else if (spot.category === 'お外') {
                 // mapUrlが設定されていて、かつ「-」でない場合
                 if (spot.mapUrl && spot.mapUrl !== '-') {
-                    linksHtml += `📍 <a href="${spot.mapUrl}" target="_blank" rel="noopener noreferrer" class="action-link map">Googleマップ</a>`;
+                    linksHtml += `<a href="${spot.mapUrl}" target="_blank" rel="noopener noreferrer" class="action-link map">📍 Googleマップ</a>`;
                 }
                 // officialUrlが設定されていて、かつ「-」でない場合
                 if (spot.officialUrl && spot.officialUrl !== '-') {
-                    linksHtml += `🌐 <a href="${spot.officialUrl}" target="_blank" rel="noopener noreferrer" class="action-link official">公式サイト</a>`;
+                    linksHtml += `<a href="${spot.officialUrl}" target="_blank" rel="noopener noreferrer" class="action-link official">🌐 公式サイト</a>`;
                 }
             }
             
