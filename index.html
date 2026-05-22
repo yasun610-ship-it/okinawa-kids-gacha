@@ -15,9 +15,9 @@
         .weather-banner { background-color: #e0f7fa; color: #006064; text-align: center; padding: 10px; font-size: 0.9em; border-bottom: 1px solid #b2ebf2; }
         .weather-banner a { color: #00838f; font-weight: bold; text-decoration: underline; margin-left: 10px; }
 
-        /* フィルター部分 */
-        .filters { padding: 10px 15px; background: #fff; border-bottom: 2px solid #eee; display: flex; flex-wrap: wrap; gap: 10px; }
-        select { flex: 1 1 calc(33% - 10px); min-width: 100px; padding: 8px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.9em; }
+        /* フィルター部分（★修正：折り返しと柔軟性の強化） */
+        .filters { padding: 10px; background: #fff; border-bottom: 2px solid #eee; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        select { flex: 1 1 calc(33% - 8px); min-width: 90px; padding: 8px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.85em; }
         
         /* キープエリア */
         .keep-area { padding: 15px; background-color: #fff3e0; border-bottom: 2px dashed #ffb74d; text-align: center; }
@@ -28,8 +28,8 @@
         .gacha-btn:active { transform: scale(0.95); }
         .gacha-btn:disabled { background-color: #ccc; box-shadow: none; cursor: not-allowed; }
 
-        /* リスト部分 */
-        .spot-list { padding: 15px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 50px; }
+        /* リスト部分（★修正：左右の余白を追加してフチへの圧迫感を軽減） */
+        .spot-list { padding: 15px 10px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 50px; }
         .spot-card { background: white; border: 1px solid #eee; border-radius: 10px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: relative; }
         .spot-card h3 { margin: 0 0 5px 0; font-size: 1.1em; color: #2c3e50; padding-right: 40px; }
         .tags { margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 4px; }
@@ -38,9 +38,9 @@
         .advice { font-size: 0.8em; color: #d84315; background: #fbe9e7; padding: 8px; border-radius: 5px; margin-bottom: 8px; border-left: 3px solid #ff5722; }
         .infra { font-size: 0.8em; color: #777; margin-bottom: 5px; }
         
-        /* アクションリンク用ボタンスタイル */
-        .link-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #eee; }
-        .action-link { display: inline-flex; align-items: center; background-color: #f0f0f0; color: #444; text-decoration: none; font-size: 0.8em; font-weight: bold; padding: 6px 12px; border-radius: 15px; transition: background-color 0.2s; }
+        /* アクションリンク用ボタンスタイル（★修正：折り返し設定とボタン幅の柔軟化） */
+        .link-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #eee; justify-content: center; }
+        .action-link { flex: 1 1 auto; min-width: 80px; text-align: center; display: inline-flex; justify-content: center; align-items: center; background-color: #f0f0f0; color: #444; text-decoration: none; font-size: 0.8em; font-weight: bold; padding: 8px 12px; border-radius: 15px; transition: background-color 0.2s; box-sizing: border-box; }
         .action-link:hover { background-color: #e0e0e0; }
         .action-link.youtube { background-color: #ffebee; color: #c62828; }
         .action-link.map { background-color: #e8f5e9; color: #2e7d32; }
