@@ -101,6 +101,8 @@
                 <button class="area-tab" onclick="setAreaFilter('中部', this)">中部</button>
                 <button class="area-tab" onclick="setAreaFilter('南部', this)">南部</button>
             </div>
+            
+            <select id="filter-city" onchange="renderList()" style="display: none; width: 100%; margin-bottom: 5px;"></select>
 
             <select id="filter-category" onchange="renderList()">
                 <option value="all">カテゴリ：すべて</option>
@@ -174,6 +176,23 @@
             currentAreaFilter = area;
             document.querySelectorAll('.area-tab').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
+
+            // ★追加：市町村プルダウンの制御
+            const cityFilter = document.getElementById('filter-city');
+            if (area === 'all') {
+                cityFilter.style.display = 'none';
+                cityFilter.value = 'all';
+            } else {
+                // エリア名自体（"北部"など）を除外してリスト作成
+                const cities = areaMap[area].filter(city => city !== area); 
+                let optionsHtml = `<option value="all">${area}すべて</option>`;
+                cities.forEach(city => {
+                    optionsHtml += `<option value="${city}">${city}</option>`;
+                });
+                cityFilter.innerHTML = optionsHtml;
+                cityFilter.style.display = 'block';
+            }
+
             renderList();
         }
 
@@ -234,11 +253,17 @@
                 if (categoryFilter !== "all" && spot.category !== categoryFilter) return;
                 if (weatherFilter === "雨天OK" && spot.weather !== "雨天OK" && spot.weather !== "全天候") return;
                 
-                // 2. エリアフィルター（市町村名から自動判定）
+                // 2. エリア・市町村フィルター
                 if (currentAreaFilter !== "all" && spot.category !== 'おうち') {
                     const matchWords = areaMap[currentAreaFilter];
                     const isMatch = matchWords.some(word => (spot.city && spot.city.includes(word)));
                     if (!isMatch) return;
+
+                    // ★追加：市町村プルダウンでの絞り込み
+                    const selectedCity = document.getElementById('filter-city').value;
+                    if (selectedCity !== "all" && spot.city && !spot.city.includes(selectedCity)) {
+                        return;
+                    }
                 }
 
                 // 3. キーワード検索（名前、説明、カテゴリ、市町村から検索）
@@ -306,6 +331,10 @@
                 if (currentAreaFilter !== "all" && spot.category !== 'おうち') {
                     const matchWords = areaMap[currentAreaFilter];
                     if (!matchWords.some(word => (spot.city && spot.city.includes(word)))) return false;
+                    
+                    // ★追加：直接ガチャの市町村絞り込み対応
+                    const selectedCity = document.getElementById('filter-city').value;
+                    if (selectedCity !== "all" && spot.city && !spot.city.includes(selectedCity)) return false;
                 }
                 if (keyword) {
                     const textToSearch = (spot.name + (spot.desc || "") + spot.category + (spot.city || "")).toLowerCase();
